@@ -1,6 +1,6 @@
-/// @function				VISoftbody(stiffness);
+/// @function			VISoftbody(stiffness);
 /// @param {Real} stiffness	The amount of iterations the sticks try to correct their positions.
-/// @description			Base struct for softbodies.
+/// @description		Base struct for softbodies.
 function VISoftbody(stiffness) : VIPhysical(stiffness) constructor {
 	/// @function ComputeCenter();
 	/// @return {Struct}
@@ -90,11 +90,11 @@ function VISoftbody(stiffness) : VIPhysical(stiffness) constructor {
 	};
 	
 	// Override Simulate function
-	/// @function				Simulate(delta, grav, frict);
+	/// @function			Simulate(delta, grav, frict);
 	/// @param {Real} delta		The delta time.
 	/// @param {Real} grav		The gravity.
 	/// @param {Real} frict		The friction.
-	/// @description			Simulates this object.
+	/// @description		Simulates this object.
 	Simulate = function(delta, grav, frict) {
 		// Make sure the object is active
 		if (!active) exit;
@@ -104,13 +104,13 @@ function VISoftbody(stiffness) : VIPhysical(stiffness) constructor {
 	};
 };
 
-/// @function				VIBox(x, y, width, height, stiffness);
-/// @param {Real} x			The box's x position.
-/// @param {Real} y			The box's y position.
+/// @function			VIBox(x, y, width, height, stiffness);
+/// @param {Real} x		The box's x position.
+/// @param {Real} y		The box's y position.
 /// @param {Real} width		The box's width.
 /// @param {Real} height	The box's height.
 /// @param {Real} stiffness	The amount of iterations the sticks try to correct their positions.
-/// @description			Base struct for boxes.
+/// @description		Base struct for boxes.
 function VIBox(x, y, width, height, stiffness) : VISoftbody(stiffness) constructor {
 	// Create points and sticks
 	AddPoint(x, y, 1);
@@ -133,14 +133,14 @@ function VIBox(x, y, width, height, stiffness) : VISoftbody(stiffness) construct
 	InitShapeData();
 };
 
-/// @function						VIBoxColored(x, y, width, height, color, stiffness);
-/// @param {Real} x					The box's x position.
-/// @param {Real} y					The box's y position.
-/// @param {Real} width				The box's width.
-/// @param {Real} height			The box's height.
+/// @function				VIBoxColored(x, y, width, height, color, stiffness);
+/// @param {Real} x			The box's x position.
+/// @param {Real} y			The box's y position.
+/// @param {Real} width			The box's width.
+/// @param {Real} height		The box's height.
 /// @param {Constant.Color} color	The box's color.
-/// @param {Real} stiffness			The amount of iterations the sticks try to correct their positions.
-/// @description					A colored box.
+/// @param {Real} stiffness		The amount of iterations the sticks try to correct their positions.
+/// @description			A colored box.
 function VIBoxColored(x, y, width, height, color, stiffness) : VIBox(x, y, width, height, stiffness) constructor {
 	// Save input parameters
 	self.color = color;
@@ -169,14 +169,14 @@ function VIBoxColored(x, y, width, height, color, stiffness) : VIBox(x, y, width
 	};
 };
 
-/// @function						VIBoxTextured(x, y, width, height, sprite, stiffness);
-/// @param {Real} x					The box's x position.
-/// @param {Real} y					The box's y position.
-/// @param {Real} width				The box's width.
-/// @param {Real} height			The box's height.
+/// @function				VIBoxTextured(x, y, width, height, sprite, stiffness);
+/// @param {Real} x			The box's x position.
+/// @param {Real} y			The box's y position.
+/// @param {Real} width			The box's width.
+/// @param {Real} height		The box's height.
 /// @param {Asset.GMSprite} sprite	The box's sprite.
-/// @param {Real} stiffness			The amount of iterations the sticks try to correct their positions.
-/// @description					A box drawn using a texture.
+/// @param {Real} stiffness		The amount of iterations the sticks try to correct their positions.
+/// @description			A box drawn using a texture.
 function VIBoxTextured(x, y, width, height, sprite, stiffness) : VIBox(x, y, width, height, stiffness) constructor {
 	// Save input parameters
 	self.sprite = sprite;
