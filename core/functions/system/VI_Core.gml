@@ -1,6 +1,6 @@
 /// @function			VISystem(frict, grav);
-/// @param {Real} frict	The system's friction.
-/// @param {Real} grav	The system's gravity.
+/// @param {Real} frict		The system's friction.
+/// @param {Real} grav		The system's gravity.
 /// @description		System struct.
 function VISystem(frict, grav) constructor {
 	// Initialize "private" member vaiables
@@ -13,33 +13,33 @@ function VISystem(frict, grav) constructor {
 	self.frict = frict;
 	self.grav = grav;
 	
-	/// @function				SetActive(active);
+	/// @function			SetActive(active);
 	/// @param {Bool} active	Active flag.
-	/// @description			Sets whether or not the system is active (simulating) or not.
+	/// @description		Sets whether or not the system is active (simulating) or not.
 	SetActive = function(active) {
 		self.active = active;
 	};
 	
-	/// @function				SetVisible(visible);
+	/// @function			SetVisible(visible);
 	/// @param {Bool} visible	Visible flag.
-	/// @description			Sets whether or not the system is visible (drawing) or not.
+	/// @description		Sets whether or not the system is visible (drawing) or not.
 	SetVisible = function(visible) {
 		self.visible = visible;
 	};
 	
-	/// @function				AddObject(object);
+	/// @function			AddObject(object);
 	/// @param {Struct} object	The object to add.
-	/// @description			Adds an object to the objects list.
+	/// @description		Adds an object to the objects list.
 	AddObject = function(object) {
 		ds_list_add(objectList, object);
 		object.systemReference = self;
 	};
 	
-	/// @function				GetDistance(xx, yy, precise);
+	/// @function			GetDistance(xx, yy, precise);
 	/// @param {Real} xx		The x position to measure from.
 	/// @param {Real} yy		The y position to measure from.
 	/// @param {Bool} precise	Wether or not to use precise measurements. Be careful with this, precise measurements can be very resource intensive!
-	/// @description			Returns the distance to the system.
+	/// @description		Returns the distance to the system.
 	/// @return {Bool}
 	GetDistance = function(xx, yy, precise) {
 		// Check all objects of the system
@@ -62,7 +62,7 @@ function VISystem(frict, grav) constructor {
 	};
 	
 	/// @function			Simulate(delta);
-	/// @param {Real} delta	The delta time.
+	/// @param {Real} delta		The delta time.
 	/// @description		Simulates all objects of this system.
 	Simulate = function(delta) {
 		// Exit if the system is not active
@@ -90,9 +90,9 @@ function VISystem(frict, grav) constructor {
 		}
 	};
 	
-	/// @function				Draw(wireframe);
+	/// @function			Draw(wireframe);
 	/// @param {Bool} wireframe	Whether or not to use wireframe drawing or not.
-	/// @description			Draws all objects of this system.
+	/// @description		Draws all objects of this system.
 	Draw = function(wireframe) {
 		// Exit if the system is not visible
 		if (!visible) exit;
@@ -145,9 +145,9 @@ function VISystem(frict, grav) constructor {
 	};
 };
 
-/// @function				VISystemExists(system);
+/// @function			VISystemExists(system);
 /// @param {Struct} system	The variable to check.
-/// @description			Returns wether or not the input variable is a valid VI system.
+/// @description		Returns wether or not the input variable is a valid VI system.
 /// @return {Bool}
 function VISystemExists(system) {
 	return (is_struct(system) && variable_struct_exists(system, "type") && system.type == VI_TYPE.SYSTEM);
@@ -162,33 +162,33 @@ function VIObject() constructor {
 	active = true;
 	visible = true;
 	
-	/// @function				SetActive(active);
+	/// @function			SetActive(active);
 	/// @param {Bool} active	Active flag.
-	/// @description			Sets whether or not the system is active (simulating) or not.
+	/// @description		Sets whether or not the system is active (simulating) or not.
 	SetActive = function(active) {
 		self.active = active;
 	};
 	
-	/// @function				SetVisible(visible);
+	/// @function			SetVisible(visible);
 	/// @param {Bool} visible	Visible flag.
-	/// @description			Sets whether or not the system is visible (drawing) or not.
+	/// @description		Sets whether or not the system is visible (drawing) or not.
 	SetVisible = function(visible) {
 		self.visible = visible;
 	};
 	
-	/// @function				GetDistance(xx, yy, precise);
+	/// @function			GetDistance(xx, yy, precise);
 	/// @param {Real} xx		The x position to measure from.
 	/// @param {Real} yy		The y position to measure from.
 	/// @param {Bool} precise	Wether or not to use precise measurements. Be careful with this, precise measurements can be very resource intensive!
-	/// @description			Returns the distance to the group.
+	/// @description		Returns the distance to the group.
 	/// @return {Bool}
 	GetDistance = function(xx, yy, precise) {};
 	
-	/// @function				Simulate(delta, grav, frict);
+	/// @function			Simulate(delta, grav, frict);
 	/// @param {Real} delta		The delta time.
 	/// @param {Real} grav		The gravity.
 	/// @param {Real} frict		The friction.
-	/// @description			Simulates this object.
+	/// @description		Simulates this object.
 	Simulate = function(delta, grav, frict) {};
 	
 	/// @function		DrawWireframe();
@@ -204,17 +204,17 @@ function VIObject() constructor {
 	Cleanup = function() {};
 };
 
-/// @function				VIObjectExists(object);
+/// @function			VIObjectExists(object);
 /// @param {Struct} object	The variable to check.
-/// @description			Returns wether or not the input variable is a valid VI object.
+/// @description		Returns wether or not the input variable is a valid VI object.
 /// @return {Bool}
 function VIObjectExists(object) {
 	return (is_struct(object) && variable_struct_exists(object, "type") && object.type == VI_TYPE.OBJECT);
 };
 
-/// @function				VIPhysical(stiffness);
+/// @function			VIPhysical(stiffness);
 /// @param {Real} stiffness	The amount of iterations the sticks try to correct their positions.
-/// @description			Base struct for physical objects. (Things that contain points and sticks)
+/// @description		Base struct for physical objects. (Things that contain points and sticks)
 function VIPhysical(stiffness) : VIObject() constructor {
 	// Initialize "private" member vaiables
 	// Do not change these values directly unless you know what you're doing!
@@ -227,24 +227,24 @@ function VIPhysical(stiffness) : VIObject() constructor {
 	/// @function			AddPoint(x, y, mass);
 	/// @param {Real} x		The point's x position.
 	/// @param {Real} y		The point's y position.
-	/// @param {Real} mass	The point's mass.
+	/// @param {Real} mass		The point's mass.
 	/// @description		Adds a new point to the point list.
 	AddPoint = function(x, y, mass) {
 		ds_list_add(pointList, new VIPoint(x, y, mass, 1));
 	}
 	
-	/// @function					AddStick(p1, p2, length, tearThreshold);
+	/// @function				AddStick(p1, p2, length, tearThreshold);
 	/// @param {Struct} p1			The stick's first point its attached to.
 	/// @param {Struct} p2			The stick's second point its attached to.
 	/// @param {Real} length		The stick's length.
-	/// @param {Real} tearThreshold	The threshold of overstretching before the stick breaks. (-1 to disable tearing).
-	/// @description				Adds a new stick to the stick list.
+	/// @param {Real} tearThreshold		The threshold of overstretching before the stick breaks. (-1 to disable tearing).
+	/// @description			Adds a new stick to the stick list.
 	AddStick = function(p1, p2, length, tearThreshold) {
 		ds_list_add(stickList, new VIStick(p1, p2, length, tearThreshold));
 	};
 	
 	/// @function			DeletePoint(index);
-	/// @param {Real} index	The point's index within the point list.
+	/// @param {Real} index		The point's index within the point list.
 	/// @description		Deletes a point from the point list.
 	DeletePoint = function(index) {
 		// Get point
@@ -266,9 +266,9 @@ function VIPhysical(stiffness) : VIObject() constructor {
 		}
 	};
 	
-	/// @function				GetPointByKeyword(keyword);
+	/// @function			GetPointByKeyword(keyword);
 	/// @param {Real} keyword	A keyword from VI_POINT_INDEX.
-	/// @description			Returns a point from the point list.
+	/// @description		Returns a point from the point list.
 	/// @return {Struct}
 	GetPointByKeyword = function(keyword) {
 		var index;
@@ -281,19 +281,19 @@ function VIPhysical(stiffness) : VIObject() constructor {
 		return pointList[| index];
 	};
 	
-	/// @function			GetPointByIndex(index);
+	/// @function		GetPointByIndex(index);
 	/// @param {Real} index	The index of the point within the object's pointList.
-	/// @description		Returns a point from the point list.
+	/// @description	Returns a point from the point list.
 	/// @return {Struct}
 	GetPointByIndex = function(index) {
 		return pointList[| index];
 	};
 	
-	/// @function				VerletSimulation(delta, grav, frict);
+	/// @function			VerletSimulation(delta, grav, frict);
 	/// @param {Real} delta		The delta time.
 	/// @param {Real} grav		The gravity.
 	/// @param {Real} frict		The friction.
-	/// @description			Verlet simulation.
+	/// @description		Verlet simulation.
 	VerletSimulation = function(delta, grav, frict) {
 		#region Update points
 		var pointAmount = ds_list_size(pointList);
@@ -311,10 +311,10 @@ function VIPhysical(stiffness) : VIObject() constructor {
 			externals = (1 - frict) * sqr(min(1, delta));
 			
 			currentPoint.position.current.x = 2 * currentPoint.position.current.x - currentPoint.position.previous.x + acceleration.x * externals;
-		    currentPoint.position.current.y = 2 * currentPoint.position.current.y - currentPoint.position.previous.y + acceleration.y * externals;
+			currentPoint.position.current.y = 2 * currentPoint.position.current.y - currentPoint.position.previous.y + acceleration.y * externals;
 			
-		    currentPoint.position.previous.x = posPre.x;
-		    currentPoint.position.previous.y = posPre.y;
+			currentPoint.position.previous.x = posPre.x;
+			currentPoint.position.previous.y = posPre.y;
 		}
 		#endregion
 		
@@ -358,11 +358,11 @@ function VIPhysical(stiffness) : VIObject() constructor {
 		if (stabilizeTime < 0) stabilizeTime = 0;
 	};
 	
-	/// @function				Simulate(delta, grav, frict);
+	/// @function			Simulate(delta, grav, frict);
 	/// @param {Real} delta		The delta time.
 	/// @param {Real} grav		The gravity.
 	/// @param {Real} frict		The friction.
-	/// @description			Simulates this object.
+	/// @description		Simulates this object.
 	Simulate = function(delta, grav, frict) {
 		// Make sure the object is active
 		if (!active) exit;
@@ -428,12 +428,12 @@ function VIPhysical(stiffness) : VIObject() constructor {
 	};
 };
 
-/// @function				VIPoint(x, y, mass, radius);
-/// @param {Real} x			The point's x position.
-/// @param {Real} y			The point's y position.
+/// @function			VIPoint(x, y, mass, radius);
+/// @param {Real} x		The point's x position.
+/// @param {Real} y		The point's y position.
 /// @param {Real} mass		How much the point gets influenced by forces. (0 = frozen in place)
 /// @param {Real} radius	The radius of the point.
-/// @description			Point struct.
+/// @description		Point struct.
 function VIPoint(x, y, mass, radius) constructor {
 	state = VI_POINT_STATE.ALIVE;
 	position = {current : {x : x, y : y}, previous : {x : x, y : y}};
@@ -443,12 +443,12 @@ function VIPoint(x, y, mass, radius) constructor {
 	previousPoint = noone;
 };
 
-/// @function					VIStick(p1, p2, length, tearThreshold);
+/// @function				VIStick(p1, p2, length, tearThreshold);
 /// @param {Struct} p1			The stick's first point its attached to.
 /// @param {Struct} p2			The stick's second point its attached to.
 /// @param {Real} length		The stick's length.
-/// @param {Real} tearThreshold	The threshold of overstretching before the stick breaks. (-1 to disable tearing).
-/// @description				Stick struct.
+/// @param {Real} tearThreshold		The threshold of overstretching before the stick breaks. (-1 to disable tearing).
+/// @description			Stick struct.
 function VIStick(p1, p2, length, tearThreshold) constructor {
 	self.p1 = p1;
 	self.p2 = p2;
