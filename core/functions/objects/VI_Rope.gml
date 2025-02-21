@@ -1,11 +1,11 @@
-/// @function						VIRope(x, y, length, pointAmount, stiffness, tearThreshold);
-/// @param {Real} x					The rope's x position.
-/// @param {Real} y					The rope's y position.
-/// @param {Real} length			The rope's length.
+/// @function				VIRope(x, y, length, pointAmount, stiffness, tearThreshold);
+/// @param {Real} x			The rope's x position.
+/// @param {Real} y			The rope's y position.
+/// @param {Real} length		The rope's length.
 /// @param {Real} pointAmount		How many points the rope should have.
-/// @param {Real} stiffness			The amount of iterations the sticks try to correct their positions.
+/// @param {Real} stiffness		The amount of iterations the sticks try to correct their positions.
 /// @param {Real} tearThreshold		The threshold of overstretching before the sticks breaks. (-1 to disable tearing).
-/// @description					Base struct for ropes.
+/// @description			Base struct for ropes.
 function VIRope(x, y, length, pointAmount, stiffness, tearThreshold) : VIPhysical(stiffness) constructor {
 	// Save input parameters
 	self.pointAmount = pointAmount;
@@ -32,16 +32,16 @@ function VIRope(x, y, length, pointAmount, stiffness, tearThreshold) : VIPhysica
 	}
 };
 
-/// @function						VIRopeColored(x, y, length, pointAmount, color, tickness, stiffness, tearThreshold);
-/// @param {Real} x					The rope's x position.
-/// @param {Real} y					The rope's y position.
-/// @param {Real} length			The rope's length.
+/// @function				VIRopeColored(x, y, length, pointAmount, color, tickness, stiffness, tearThreshold);
+/// @param {Real} x			The rope's x position.
+/// @param {Real} y			The rope's y position.
+/// @param {Real} length		The rope's length.
 /// @param {Real} pointAmount		How many points the rope should have.
 /// @param {Constant.Color} color	The rope's color.
-/// @param {Real} thickness			The rope's thickness.
-/// @param {Real} stiffness			The amount of iterations the sticks try to correct their positions.
+/// @param {Real} thickness		The rope's thickness.
+/// @param {Real} stiffness		The amount of iterations the sticks try to correct their positions.
 /// @param {Real} tearThreshold		The threshold of overstretching before the sticks breaks. (-1 to disable tearing).
-/// @description					A colored rope.
+/// @description			A colored rope.
 function VIRopeColored(x, y, length, pointAmount, color, thickness, stiffness, tearThreshold) : VIRope(x, y, length, pointAmount, stiffness, tearThreshold) constructor {
 	// Save input parameters
 	self.color = color;
@@ -66,15 +66,15 @@ function VIRopeColored(x, y, length, pointAmount, color, thickness, stiffness, t
 	};
 };
 
-/// @function						VIRopeTextured(x, y, length, pointAmount, sprite, stiffness, tearThreshold);
-/// @param {Real} x					The rope's x position.
-/// @param {Real} y					The rope's y position.
-/// @param {Real} length			The rope's length.
+/// @function				VIRopeTextured(x, y, length, pointAmount, sprite, stiffness, tearThreshold);
+/// @param {Real} x			The rope's x position.
+/// @param {Real} y			The rope's y position.
+/// @param {Real} length		The rope's length.
 /// @param {Real} pointAmount		How many points the rope should have.
 /// @param {Asset.GMSprite} sprite	The rope's sprite.
-/// @param {Real} stiffness			The amount of iterations the sticks try to correct their positions.
+/// @param {Real} stiffness		The amount of iterations the sticks try to correct their positions.
 /// @param {Real} tearThreshold		The threshold of overstretching before the sticks breaks. (-1 to disable tearing).
-/// @description					A rope drawn using a texture.
+/// @description			A rope drawn using a texture.
 function VIRopeTextured(x, y, length, pointAmount, sprite, stiffness, tearThreshold) : VIRope(x, y, length, pointAmount, stiffness, tearThreshold) constructor {
 	// Save input parameters
 	self.sprite = sprite;
