@@ -11,17 +11,17 @@ function VICollider(x, y) : VIObject() constructor {
 	center = {x : x, y : y};
 	shapeInverted = false;
 	
-	/// @function				SetInverted(invert);
+	/// @function			SetInverted(invert);
 	/// @param {Bool} invert	Wether or not to invert the shape.
-	/// @description			Sets a flag for inverting the colliders shape.
+	/// @description		Sets a flag for inverting the colliders shape.
 	SetInverted = function(invert) {
 		shapeInverted = invert;
 	};
 	
-	/// @function			Collide(px, py);
+	/// @function		Collide(px, py);
 	/// @param {Real} px	The x position to check.
 	/// @param {Real} py	The y position to check.
-	/// @description		Checks if the position is within the collider.
+	/// @description	Checks if the position is within the collider.
 	Collide = function(px, py) {};
 	
 	/// @function		UpdateCenterPosition();
@@ -31,11 +31,11 @@ function VICollider(x, y) : VIObject() constructor {
 		center.y = y;
 	};
 	
-	/// @function				Simulate(delta, grav, frict);
+	/// @function			Simulate(delta, grav, frict);
 	/// @param {Real} delta		The delta time.
 	/// @param {Real} grav		The gravity.
 	/// @param {Real} frict		The friction.
-	/// @description			Simulates this object.
+	/// @description		Simulates this object.
 	Simulate = function(delta, grav, frict) {
 		// Make sure the object is active
 		if (!active) exit;
@@ -100,19 +100,19 @@ function VICollider(x, y) : VIObject() constructor {
 	Draw = function() {};
 };
 
-/// @function				VIColliderSphere(x, y, radius);
-/// @param {Real} x			The sphere collider's x position.
-/// @param {Real} y			The sphere collider's y position.
+/// @function			VIColliderSphere(x, y, radius);
+/// @param {Real} x		The sphere collider's x position.
+/// @param {Real} y		The sphere collider's y position.
 /// @param {Real} radius	The sphere collider's radius.
-/// @description			A spherical collider.
+/// @description		A spherical collider.
 function VIColliderSphere(x, y, radius) : VICollider(x, y) constructor {
 	// Save input parameters
 	self.radius = radius;
 	
-	/// @function			Collide(px, py);
+	/// @function		Collide(px, py);
 	/// @param {Real} px	The x position to check.
 	/// @param {Real} py	The y position to check.
-	/// @description		Checks if the position is within the collider.
+	/// @description	Checks if the position is within the collider.
 	Collide = function(px, py) {
 		return shapeInverted != point_in_circle(px, py, x, y, radius);
 	};
@@ -124,21 +124,21 @@ function VIColliderSphere(x, y, radius) : VICollider(x, y) constructor {
 	};
 };
 
-/// @function				VIColliderBox(x, y, width, height);
-/// @param {Real} x			The box collider's x position.
-/// @param {Real} y			The box collider's y position.
+/// @function			VIColliderBox(x, y, width, height);
+/// @param {Real} x		The box collider's x position.
+/// @param {Real} y		The box collider's y position.
 /// @param {Real} width		The box collider's width.
 /// @param {Real} height	The box collider's height.
-/// @description			A box collider.
+/// @description		A box collider.
 function VIColliderBox(x, y, width, height) : VICollider(x, y) constructor {
 	// Save input parameters
 	self.width = width;
 	self.height = height;
 	
-	/// @function			Collide(px, py);
+	/// @function		Collide(px, py);
 	/// @param {Real} px	The x position to check.
 	/// @param {Real} py	The y position to check.
-	/// @description		Checks if the position is within the collider.
+	/// @description	Checks if the position is within the collider.
 	Collide = function(px, py) {
 		return shapeInverted != point_in_rectangle(px, py, x, y, x + width, y + height);
 	};
@@ -157,11 +157,11 @@ function VIColliderBox(x, y, width, height) : VICollider(x, y) constructor {
 	};
 };
 
-/// @function						VIColliderSprite(x, y, sprite);
-/// @param {Real} x					The collider's x position.
-/// @param {Real} y					The collider's y position.
+/// @function				VIColliderSprite(x, y, sprite);
+/// @param {Real} x			The collider's x position.
+/// @param {Real} y			The collider's y position.
 /// @param {Asset.GMSprite} sprite	The collider's sprite.
-/// @description					A sprite collider. Must be initialized before it works!
+/// @description			A sprite collider. Must be initialized before it works!
 function VIColliderSprite(x, y, sprite) : VICollider(x, y) constructor {
 	// Save input parameters
 	self.sprite = sprite;
@@ -194,10 +194,10 @@ function VIColliderSprite(x, y, sprite) : VICollider(x, y) constructor {
 		initialized = true;
 	};
 	
-	/// @function			Collide(px, py);
+	/// @function		Collide(px, py);
 	/// @param {Real} px	The x position to check.
 	/// @param {Real} py	The y position to check.
-	/// @description		Checks if the position is within the collider.
+	/// @description	Checks if the position is within the collider.
 	Collide = function(px, py) {
 		// Exit if the collider was not initialized
 		if (!initialized) return false;
