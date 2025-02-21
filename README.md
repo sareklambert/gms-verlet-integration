@@ -15,5 +15,11 @@
 * Documented functions and clean script structure
 * All objects can be textured
 
+## New features to be added
+* Delete functions for all objects
+* Interaction between different VIPysical objects of the same system
+* GetDistance() function for all objects
+* Example camera setup which hides/deactivates objects if they are outside of the camera bounds
+
 ## License
 * This work is released under general MIT license. You are free to use it for any private or commercial projects c: (See LICENSE file)
