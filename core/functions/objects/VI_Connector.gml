@@ -22,28 +22,28 @@ function VIConnector(x, y) : VIObject() constructor {
 		self.y = y;
 	};
 	
-	/// @function			SetParent(type, obj);
+	/// @function		SetParent(type, obj);
 	/// @param {Real} type	The parent type. Selected from VI_PC_TYPE.
 	/// @param {Any} obj	The VIPoint, instance, or VIForcefield.
-	/// @description		Sets the parent of the connector.
+	/// @description	Sets the parent of the connector.
 	SetParent = function(type, obj) {
 		parent = {type : type, obj : obj};
 	};
 	
-	/// @function						AddChild(type, obj, updateRotation);
-	/// @param {Real} type				The parent type. Selected from VI_PC_TYPE.
-	/// @param {Any} obj				The VIPoint or instance.
+	/// @function				AddChild(type, obj, updateRotation);
+	/// @param {Real} type			The parent type. Selected from VI_PC_TYPE.
+	/// @param {Any} obj			The VIPoint or instance.
 	/// @param {Bool} updateRotation	Wehter or not to update the childs image_angle. (Parent must be VIPoint of a VIRope, Child must be instance)
-	/// @description					Adds a child to the connector.
+	/// @description			Adds a child to the connector.
 	AddChild = function(type, obj, updateRotation) {
 		ds_list_add(childList, {type : type, obj : obj, updateRotation : updateRotation});
 	};
 	
-	/// @function				Simulate(delta, grav, frict);
+	/// @function			Simulate(delta, grav, frict);
 	/// @param {Real} delta		The delta time.
 	/// @param {Real} grav		The gravity.
 	/// @param {Real} frict		The friction.
-	/// @description			Simulates this object.
+	/// @description		Simulates this object.
 	Simulate = function(delta, grav, frict) {
 		// Make sure the object is active
 		if (!active) exit;
@@ -92,7 +92,7 @@ function VIConnector(x, y) : VIObject() constructor {
 						if (parent.obj.previousPoint == noone) continue;
 						
 						currentChild.obj.image_angle = point_direction(parent.obj.previousPoint.position.current.x, parent.obj.previousPoint.position.current.y,
-																		parent.obj.position.current.x, parent.obj.position.current.y);
+												parent.obj.position.current.x, parent.obj.position.current.y);
 					}
 					break;
 				case VI_PC_TYPE.COLLIDER:
