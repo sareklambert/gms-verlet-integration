@@ -1,8 +1,8 @@
-/// @function				VIForcefield(x, y, radius);
-/// @param {Real} x			The x position of the field.
-/// @param {Real} y			The y position of the field.
+/// @function			VIForcefield(x, y, radius);
+/// @param {Real} x		The x position of the field.
+/// @param {Real} y		The y position of the field.
 /// @param {Real} radius	The radius of the field.
-/// @description			Base struct for force fields.
+/// @description		Base struct for force fields.
 function VIForcefield(x, y, radius) : VIObject() constructor {
 	// Initialize "private" member vaiables
 	// Do not change these values directly unless you know what you're doing!
@@ -22,14 +22,14 @@ function VIForcefield(x, y, radius) : VIObject() constructor {
 	Draw = function() {};
 };
 
-/// @function				VIForcefieldWind(x, y, radius, dir, str, spd);
-/// @param {Real} x			The x position of the field.
-/// @param {Real} y			The y position of the field.
+/// @function			VIForcefieldWind(x, y, radius, dir, str, spd);
+/// @param {Real} x		The x position of the field.
+/// @param {Real} y		The y position of the field.
 /// @param {Real} radius	The radius of the field.
 /// @param {Real} dir		The direction of the field.
 /// @param {Real} str		The strength of the field.
 /// @param {Real} spd		The speed of how fast the wind direction changes.
-/// @description			Accelerates points in the wind direction in a waving motion.
+/// @description		Accelerates points in the wind direction in a waving motion.
 function VIForcefieldWind(x, y, radius, dir, str, spd) : VIForcefield(x, y, radius) constructor {
 	// Save input parameters
 	self.dir = dir;
@@ -37,11 +37,11 @@ function VIForcefieldWind(x, y, radius, dir, str, spd) : VIForcefield(x, y, radi
 	self.spd = spd;
 	strStart = str;
 	
-	/// @function				Simulate(delta, grav, frict);
+	/// @function			Simulate(delta, grav, frict);
 	/// @param {Real} delta		The delta time.
 	/// @param {Real} grav		The gravity.
 	/// @param {Real} frict		The friction.
-	/// @description			Simulates this object.
+	/// @description		Simulates this object.
 	Simulate = function(delta, grav, frict) {
 		// Make sure the object is active
 		if (!active) exit;
@@ -85,21 +85,21 @@ function VIForcefieldWind(x, y, radius, dir, str, spd) : VIForcefield(x, y, radi
 	};
 };
 
-/// @function				VIForcefieldAttract(x, y, radius, str);
-/// @param {Real} x			The x position of the field.
-/// @param {Real} y			The y position of the field.
+/// @function			VIForcefieldAttract(x, y, radius, str);
+/// @param {Real} x		The x position of the field.
+/// @param {Real} y		The y position of the field.
 /// @param {Real} radius	The radius of the field.
 /// @param {Real} str		The strength of the field.
-/// @description			Attracts points in the field towards its center.
+/// @description		Attracts points in the field towards its center.
 function VIForcefieldAttract(x, y, radius, str) : VIForcefield(x, y, radius) constructor {
 	// Save input parameters
 	self.str = str;
 	
-	/// @function				Simulate(delta, grav, frict);
+	/// @function			Simulate(delta, grav, frict);
 	/// @param {Real} delta		The delta time.
 	/// @param {Real} grav		The gravity.
 	/// @param {Real} frict		The friction.
-	/// @description			Simulates this object.
+	/// @description		Simulates this object.
 	Simulate = function(delta, grav, frict) {
 		// Make sure the object is active
 		if (!active) exit;
@@ -131,17 +131,17 @@ function VIForcefieldAttract(x, y, radius, str) : VIForcefield(x, y, radius) con
 	};
 };
 
-/// @function				VIForcefieldDelete(x, y, radius);
-/// @param {Real} x			The x position of the field.
-/// @param {Real} y			The y position of the field.
+/// @function			VIForcefieldDelete(x, y, radius);
+/// @param {Real} x		The x position of the field.
+/// @param {Real} y		The y position of the field.
 /// @param {Real} radius	The radius of the field.
-/// @description			Deletes all points within the field.
+/// @description		Deletes all points within the field.
 function VIForcefieldDelete(x, y, radius) : VIForcefield(x, y, radius) constructor {
-	/// @function				Simulate(delta, grav, frict);
+	/// @function			Simulate(delta, grav, frict);
 	/// @param {Real} delta		The delta time.
 	/// @param {Real} grav		The gravity.
 	/// @param {Real} frict		The friction.
-	/// @description			Simulates this object.
+	/// @description		Simulates this object.
 	Simulate = function(delta, grav, frict) {
 		// Make sure the object is active
 		if (!active) exit;
