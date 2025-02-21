@@ -1,13 +1,13 @@
-/// @function						VICloth(x, y, width, height, pointAmountX, pointAmountY, stiffness, tearThreshold);
-/// @param {Real} x					The cloth's left x position.
-/// @param {Real} y					The cloth's top y position.
-/// @param {Real} width				The cloth's width.
-/// @param {Real} height			The cloth's height.
+/// @function				VICloth(x, y, width, height, pointAmountX, pointAmountY, stiffness, tearThreshold);
+/// @param {Real} x			The cloth's left x position.
+/// @param {Real} y			The cloth's top y position.
+/// @param {Real} width			The cloth's width.
+/// @param {Real} height		The cloth's height.
 /// @param {Real} pointAmountX		How many points the cloth should have on the x axis.
 /// @param {Real} pointAmountY		How many points the cloth should have on the y axis.
-/// @param {Real} stiffness			The amount of iterations the sticks try to correct their positions.
+/// @param {Real} stiffness		The amount of iterations the sticks try to correct their positions.
 /// @param {Real} tearThreshold		The threshold of overstretching before the sticks breaks. (-1 to disable tearing).
-/// @description					Base struct for cloths.
+/// @description			Base struct for cloths.
 function VICloth(x, y, width, height, pointAmountX, pointAmountY, stiffness, tearThreshold) :
 			VIPhysical(stiffness) constructor {
 	// Save input parameters
@@ -53,17 +53,17 @@ function VICloth(x, y, width, height, pointAmountX, pointAmountY, stiffness, tea
 	}
 };
 
-/// @function						VIClothColored(x, y, width, height, pointAmountX, pointAmountY, color, stiffness, tearThreshold);
-/// @param {Real} x					The cloth's left x position.
-/// @param {Real} y					The cloth's top y position.
-/// @param {Real} width				The cloth's width.
-/// @param {Real} height			The cloth's height.
+/// @function				VIClothColored(x, y, width, height, pointAmountX, pointAmountY, color, stiffness, tearThreshold);
+/// @param {Real} x			The cloth's left x position.
+/// @param {Real} y			The cloth's top y position.
+/// @param {Real} width			The cloth's width.
+/// @param {Real} height		The cloth's height.
 /// @param {Real} pointAmountX		How many points the cloth should have on the x axis.
 /// @param {Real} pointAmountY		How many points the cloth should have on the y axis.
 /// @param {Constant.Color} color	The cloth's color.
-/// @param {Real} stiffness			The amount of iterations the sticks try to correct their positions.
+/// @param {Real} stiffness		The amount of iterations the sticks try to correct their positions.
 /// @param {Real} tearThreshold		The threshold of overstretching before the sticks breaks. (-1 to disable tearing).
-/// @description					A colored cloth.
+/// @description			A colored cloth.
 function VIClothColored(x, y, width, height, pointAmountX, pointAmountY, color, stiffness, tearThreshold) :
 			VICloth(x, y, width, height, pointAmountX, pointAmountY, stiffness, tearThreshold) constructor {
 	// Save input parameters
@@ -107,17 +107,17 @@ function VIClothColored(x, y, width, height, pointAmountX, pointAmountY, color, 
 	};
 };
 
-/// @function						VIClothTextured(x, y, width, height, pointAmountX, pointAmountY, sprite, stiffness, tearThreshold);
-/// @param {Real} x					The cloth's left x position.
-/// @param {Real} y					The cloth's top y position.
-/// @param {Real} width				The cloth's width.
-/// @param {Real} height			The cloth's height.
+/// @function				VIClothTextured(x, y, width, height, pointAmountX, pointAmountY, sprite, stiffness, tearThreshold);
+/// @param {Real} x			The cloth's left x position.
+/// @param {Real} y			The cloth's top y position.
+/// @param {Real} width			The cloth's width.
+/// @param {Real} height		The cloth's height.
 /// @param {Real} pointAmountX		How many points the cloth should have on the x axis.
 /// @param {Real} pointAmountY		How many points the cloth should have on the y axis.
 /// @param {Asset.GMSprite} sprite	The cloth's sprite.
-/// @param {Real} stiffness			The amount of iterations the sticks try to correct their positions.
+/// @param {Real} stiffness		The amount of iterations the sticks try to correct their positions.
 /// @param {Real} tearThreshold		The threshold of overstretching before the sticks breaks. (-1 to disable tearing).
-/// @description					A cloth drawn using a texture.
+/// @description			A cloth drawn using a texture.
 function VIClothTextured(x, y, width, height, pointAmountX, pointAmountY, sprite, stiffness, tearThreshold) :
 			VICloth(x, y, width, height, pointAmountX, pointAmountY, stiffness, tearThreshold) constructor {
 	// Save input parameters
